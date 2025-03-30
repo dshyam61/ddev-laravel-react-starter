@@ -28,7 +28,7 @@ export default defineConfig({
         strictPort: true,
         origin: `${process.env.DDEV_PRIMARY_URL.replace(/:\d+$/, "")}:5173`,
         cors: {
-            origin: /https?:\/\/([A-Za-z0-9\-\.]+)?(\.ddev\.site)(?::\d+)?$/,
+            origin: /https?:\/\/([A-Za-z0-9-.]+)?(\.ddev\.site)(?::\d+)?$/,
         },
     },
 });
