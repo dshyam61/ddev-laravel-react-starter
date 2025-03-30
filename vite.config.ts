@@ -22,11 +22,16 @@ export default defineConfig({
             'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
         },
     },
+    define: {
+        'process.env.APP_URL': JSON.stringify(process.env.APP_URL),
+    },
     server: { // to run in docker container
         host: '0.0.0.0',
         port: 5173,
         strictPort: true,
-        origin: `${process.env.DDEV_PRIMARY_URL.replace(/:\d+$/, "")}:5173`,
+        origin: process.env.APP_URL
+            ? `${process.env.APP_URL.replace(/:\d+$/, "")}:5173`
+            : undefined,
         cors: {
             origin: /https?:\/\/([A-Za-z0-9-.]+)?(\.ddev\.site)(?::\d+)?$/,
         },
